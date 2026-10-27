@@ -26,14 +26,16 @@ cd ../frontend && npm install
 
 ## 开发
 
-需要两个进程；修改 React 代码后，会在聊天页面中原地热更新。
+需要两个进程；修改 React 代码后，会在聊天页面中原地热更新；修改 `backend/app/`
+下的 Python 代码后，服务会自动重启。
 
 ```bash
 cd frontend && npm run dev           # Vite，端口 5173
 cd backend && uv run lovia-react --dev   # lovia，端口 8000，从 Vite 加载前端
 ```
 
-修改 Python 代码后需要重启 `lovia-react`。
+重启会切断正在流式输出的回答的连接：页面会显示网络错误，但服务端会把这次运行完成
+（或保存为可恢复的 checkpoint），刷新页面即可看到。
 
 ## 构建与运行
 
@@ -42,7 +44,8 @@ cd frontend && npm run build         # → backend/app/ui/dist/app.{js,css}
 cd backend && uv run lovia-react     # 直接使用构建产物，运行时不需要 Node
 ```
 
-`lovia-react --host 0.0.0.0` 监听非本机地址时，会自动生成访问令牌并打印出来。
+监听非本机地址（`--host 0.0.0.0`）时 API 需要令牌：`lovia-react` 每次启动会生成一个，
+并打印带令牌的访问链接。
 也可以作为 ASGI 应用运行（在 `backend/` 下）：`uvicorn --factory app.main:create`。
 
 ## 新增页面

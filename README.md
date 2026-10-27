@@ -27,14 +27,17 @@ cd ../frontend && npm install
 
 ## Develop
 
-Two processes; React changes hot-reload in place inside the chat page.
+Two processes; React changes hot-reload in place inside the chat page, and
+Python changes under `backend/app/` restart the server.
 
 ```bash
 cd frontend && npm run dev           # Vite on :5173
 cd backend && uv run lovia-react --dev   # lovia on :8000, loading from Vite
 ```
 
-Python changes need a restart of `lovia-react`.
+A restart cuts the connection of an answer that is still streaming: the
+page shows a network error, while the server finishes the run (or keeps it
+as a resumable checkpoint). Reload the page to see it.
 
 ## Build and run
 
@@ -43,8 +46,8 @@ cd frontend && npm run build         # → backend/app/ui/dist/app.{js,css}
 cd backend && uv run lovia-react     # serves the build; no Node at runtime
 ```
 
-`lovia-react --host 0.0.0.0` off loopback generates an access token and
-prints it. As an ASGI app (from `backend/`):
+Off loopback (`--host 0.0.0.0`) the API needs a token: `lovia-react`
+generates one per start and prints the UI link carrying it. As an ASGI app (from `backend/`):
 `uvicorn --factory app.main:create`.
 
 ## Add a page
