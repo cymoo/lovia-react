@@ -1,5 +1,7 @@
 # lovia-react
 
+**English** | [简体中文](./README-zh.md)
+
 The [lovia](https://github.com/cymoo/lovia) web chat UI, extended with React
 pages. The chat — sessions, streaming, tools, approvals, schedules, memory —
 is lovia's own bundled page; everything else (dashboards, forms, business
