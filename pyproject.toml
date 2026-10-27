@@ -1,0 +1,52 @@
+[project]
+name = "lovia-react"
+version = "0.1.0"
+description = "The lovia web chat UI, extended with React pages (Vite + Tailwind + shadcn/ui)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+    "lovia[web]>=0.9.120",
+    "python-dotenv>=1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+lovia-react = "lovia_react.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["lovia_react"]
+# The frontend build is gitignored but must ship in the wheel.
+artifacts = ["lovia_react/ui/dist/**"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[[tool.mypy.overrides]]
+# lovia ships no py.typed marker yet, so mypy won't read its annotations.
+module = ["lovia", "lovia.*"]
+ignore_missing_imports = true

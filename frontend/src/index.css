@@ -1,0 +1,101 @@
+/*
+  Tailwind + shadcn/ui inside the lovia chat page.
+
+  The page's own stylesheet sits in `@layer lovia`, declared first, so every
+  layer here outranks it. Two consequences shape this file:
+
+  - No Preflight: its global element resets would restyle the chat page.
+    `.lr-root` (each React view's mount, see lib/view.tsx) gets a scoped one.
+  - Tailwind must not define a lovia token on :root. Its radius and shadow
+    namespaces share names with lovia's (--radius-sm, --shadow-md, …), so
+    they are cleared, and the utilities shadcn uses read lovia's values.
+  - Utilities are global classes, so one named like a class of the chat
+    page's own would restyle it: `table`, `block` and `visible` are never
+    generated. tests/test_ui_css.py checks the build against lovia's names.
+
+  shadcn's semantic colors map onto lovia's tokens, so the components follow
+  the page's theme, accent and dark mode with no palette of their own.
+*/
+/* Layer order is first-mention order: name them all before any is used. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@source not inline('table block visible');
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --radius-*: initial;
+  --shadow-*: initial;
+}
+
+@utility rounded { border-radius: var(--radius-sm); }
+@utility rounded-xs { border-radius: var(--radius-xs); }
+@utility rounded-sm { border-radius: var(--radius-sm); }
+@utility rounded-md { border-radius: var(--radius); }
+@utility rounded-lg { border-radius: var(--radius-lg); }
+@utility rounded-xl { border-radius: var(--radius-xl); }
+@utility shadow { box-shadow: var(--shadow-sm); }
+@utility shadow-xs { box-shadow: var(--shadow-xs); }
+@utility shadow-sm { box-shadow: var(--shadow-sm); }
+@utility shadow-md { box-shadow: var(--shadow-md); }
+@utility shadow-lg { box-shadow: var(--shadow-lg); }
+@utility shadow-xl { box-shadow: var(--shadow-lg); }
+
+@theme inline {
+  --font-sans: var(--sans);
+  --font-mono: var(--mono);
+
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--accent);
+  --color-primary-foreground: #fff;
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--surface-3);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--danger);
+  --color-border: var(--border);
+  --color-input: var(--border-strong);
+  --color-ring: var(--accent);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+@layer base {
+  .lr-root {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .lr-root *,
+  .lr-root ::before,
+  .lr-root ::after {
+    border: 0 solid var(--color-border);
+  }
+  .lr-root :where(h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote) {
+    margin: 0;
+  }
+  .lr-root :where(h1, h2, h3, h4, h5, h6) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .lr-root :where(ul, ol) {
+    list-style: none;
+    padding: 0;
+  }
+  .lr-root :where(table) {
+    border-collapse: collapse;
+  }
+}
