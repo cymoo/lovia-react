@@ -11,7 +11,7 @@
     they are cleared, and the utilities shadcn uses read lovia's values.
   - Utilities are global classes, so one named like a class of the chat
     page's own would restyle it: `table`, `block` and `visible` are never
-    generated. tests/test_ui_css.py checks the build against lovia's names.
+    generated. backend/tests/test_ui_css.py checks the build against lovia's.
 
   shadcn's semantic colors map onto lovia's tokens, so the components follow
   the page's theme, accent and dark mode with no palette of their own.

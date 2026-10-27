@@ -1,6 +1,6 @@
 """lovia-react: the lovia web chat UI, extended with React pages."""
 
-from .app import build_agent, create
+from .main import build_agent, create
 
 __version__ = "0.1.0"
 

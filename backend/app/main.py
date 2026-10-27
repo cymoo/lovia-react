@@ -48,7 +48,7 @@ def _ui(dev_server: str | None) -> ChatUI:
 
 
 def create(*, dev_server: str | None = None, db_path: str | None = None) -> FastAPI:
-    """Build the ASGI app (``uvicorn --factory lovia_react.app:create``).
+    """Build the ASGI app (``uvicorn --factory app.main:create``).
 
     ``dev_server`` loads the React pages from a running Vite dev server
     (``http://localhost:5173``) instead of the build in ``ui/dist``.

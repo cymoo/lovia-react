@@ -1,6 +1,6 @@
 """The React build must not restyle the chat page it lives in.
 
-frontend/src/index.css explains the rules; these tests catch a lovia upgrade
+frontend/src/index.css (repo root) explains the rules; these tests catch a lovia upgrade
 (new tokens, new class names) or a new utility that breaks them.
 """
 
@@ -12,7 +12,7 @@ from pathlib import Path
 import lovia.web
 import pytest
 
-from lovia_react.app import DIST
+from app.main import DIST
 
 STATIC = Path(lovia.web.__file__).parent / "static"
 TEMPLATE = Path(lovia.web.__file__).parent / "templates" / "index.html"

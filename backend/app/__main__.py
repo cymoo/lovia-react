@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from lovia import UserError
 from lovia.web import serve
 
-from .app import create
+from .main import create
 
 VITE_DEV_SERVER = "http://localhost:5173"
 

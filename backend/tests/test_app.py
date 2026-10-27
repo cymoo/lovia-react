@@ -6,8 +6,8 @@ import pytest
 from fastapi.testclient import TestClient
 from lovia import UserError
 
-from lovia_react import app as app_module
-from lovia_react.app import create
+from app import main as app_module
+from app.main import create
 
 
 @pytest.fixture(autouse=True)

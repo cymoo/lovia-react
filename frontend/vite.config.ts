@@ -26,7 +26,7 @@ export default defineConfig(({ command }) => ({
     origin: 'http://localhost:5173',
   },
   build: {
-    outDir: '../lovia_react/ui/dist',
+    outDir: '../backend/app/ui/dist',
     emptyOutDir: true,
     lib: {
       entry: 'src/main.tsx',

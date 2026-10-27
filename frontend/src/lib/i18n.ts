@@ -1,5 +1,6 @@
 // The React views' own strings, in the language the chat page shows
-// (Settings → Language). Strings the template needs live in app.py's MESSAGES.
+// (Settings → Language). Strings the template needs live in
+// backend/app/main.py's MESSAGES.
 import { useLoviaState } from '@/lib/lovia';
 
 const en = {

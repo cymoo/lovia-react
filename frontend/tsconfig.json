@@ -18,7 +18,7 @@
   "include": [
     "src",
     "vite.config.ts",
-    // window.lovia's types, shipped in the lovia wheel (`uv sync` first).
-    "../.venv/lib/python*/site-packages/lovia/web/static/lovia.d.ts"
+    // window.lovia's types, shipped in the lovia wheel (`uv sync` in backend/ first).
+    "../backend/.venv/lib/python*/site-packages/lovia/web/static/lovia.d.ts"
   ]
 }

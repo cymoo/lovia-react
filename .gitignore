@@ -8,4 +8,4 @@ __pycache__/
 
 frontend/node_modules/
 # Built by `npm run build`; ships in the wheel (pyproject artifacts).
-lovia_react/ui/dist/
+backend/app/ui/dist/
