@@ -170,7 +170,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -506,16 +506,16 @@ wheels = [
 
 [[package]]
 name = "lovia"
-version = "0.9.120"
+version = "0.9.128"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/53/19/10b8a5b9cce78ec477eb1796a1b422c05c86195a1291e2a3310a406e2146/lovia-0.9.120.tar.gz", hash = "sha256:f7e1072c4025eb233c0346b069334a55291ea5b035d9b7a0d10b032fe72fc4de", size = 3234724, upload-time = "2026-10-27T12:18:54.356Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fb/cc/3fa7f43da9d88942539909bf8a54d1614117a369c006babd8018eb797fb4/lovia-0.9.128.tar.gz", hash = "sha256:73cedec7f86f6fe7a95da9483c35745821823777faefc209f7214c5aab3783c2", size = 3251559, upload-time = "2026-10-29T08:08:50.307Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a3/1b/f706d5c4196fefd5f18d6b896b996bbffb41f07c1b899701a74bc82c861c/lovia-0.9.120-py3-none-any.whl", hash = "sha256:0c2ca62609432b5d11dd28abb09387384df44f855b6ce05e9cc01afa8abe0d75", size = 2023771, upload-time = "2026-10-27T12:18:52.134Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/78/bd552df941217b250c59b0e9a7241049b496d9b253caebcdfa30f1b49bfc/lovia-0.9.128-py3-none-any.whl", hash = "sha256:18a0ffe15abe056f53b8510eef2a9b6adf49caf2c2c2cf92e5a31f79f1125199", size = 2034484, upload-time = "2026-10-29T08:08:47.86Z" },
 ]
 
 [package.optional-dependencies]
@@ -553,7 +553,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.27" },
-    { name = "lovia", extras = ["web"], specifier = ">=0.9.120" },
+    { name = "lovia", extras = ["web"], specifier = ">=0.9.128" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.23" },

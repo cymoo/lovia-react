@@ -24,7 +24,7 @@ MESSAGES = {
 }
 
 
-def build_agent() -> Agent:
+def build_agent() -> Agent[None]:
     return Agent(
         name="assistant",
         instructions="You are a helpful assistant.\n\n" + SURFACE_NOTE,

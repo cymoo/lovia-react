@@ -68,9 +68,9 @@ toast`. Sub-pages live in the URL as `?view=<id>/<path>` (`ViewProps.path`).
 
 shadcn/ui's colors, radii and shadows map onto lovia's design tokens, so
 React pages follow the chat page's theme, accent and dark mode. Tailwind runs
-without Preflight and keeps clear of the page's own class names and tokens —
-see the header of `frontend/src/index.css`; `backend/tests/test_ui_css.py`
-checks the build. (Tracked upstream: cymoo/lovia#317.)
+without Preflight, which would restyle the whole page — see the header of
+`frontend/src/index.css`; `backend/tests/test_ui_css.py` checks that every
+lovia token the build reads still exists.
 
 ## Checks
 

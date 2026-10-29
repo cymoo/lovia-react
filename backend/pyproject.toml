@@ -5,7 +5,7 @@ description = "The lovia web chat UI, extended with React pages (Vite + Tailwind
 requires-python = ">=3.10"
 license = "MIT"
 dependencies = [
-    "lovia[web]>=0.9.120",
+    "lovia[web]>=0.9.128",
     "python-dotenv>=1",
 ]
 
@@ -44,8 +44,3 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.mypy]
 python_version = "3.10"
 strict = true
-
-[[tool.mypy.overrides]]
-# lovia ships no py.typed marker yet, so mypy won't read its annotations.
-module = ["lovia", "lovia.*"]
-ignore_missing_imports = true

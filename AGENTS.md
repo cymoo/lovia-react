@@ -33,11 +33,10 @@ tsconfig reads `lovia.d.ts` from `../backend/.venv`.
 - **lovia owns the URL.** No client-side router: a page is a view (`?view=<id>`),
   a sub-page is `?view=<id>/<path>` → `ViewProps.path`. Each path change redraws the root.
 - **CSS must not leak into the chat page.** No Tailwind Preflight (scoped reset on
-  `.lr-root` instead); no Tailwind theme variable named like a lovia token
-  (`--radius-*`, `--shadow-*` are cleared and redefined via `@utility`); no utility
-  named like a lovia class (`table`, `block`, `visible` excluded). Declare layers
-  before use — `@layer` order is first-mention order. Run the CSS test after
-  upgrading lovia. Upstream fix: cymoo/lovia#317.
+  `.lr-root` instead). lovia's classes are `lv-*` and its tokens `--lv-*`, so
+  utilities and theme variables can't collide. Declare layers before use —
+  `@layer` order is first-mention order. Read lovia's tokens as `var(--lv-…)`;
+  run the CSS test after upgrading lovia (it checks they all still exist).
 - `window.lovia`'s types come from the installed wheel
   (`backend/.venv/lib/python*/site-packages/lovia/web/static/lovia.d.ts`) — `uv sync`
   before `tsc`.
@@ -45,8 +44,6 @@ tsconfig reads `lovia.d.ts` from `../backend/.venv`.
 - shadcn CLI: it doesn't resolve the `@/` alias under TS 7 and writes
   `import { cn } from "cn"` (and installs an npm package `cn`). After `npx shadcn add`,
   point the import at `@/lib/utils` and uninstall `cn`.
-- mypy ignores lovia's annotations until it ships `py.typed` (cymoo/lovia#318); drop
-  the override in `backend/pyproject.toml` then.
 - Use only lovia's stable surface (docs/en/stability.md): `create_app`, `ChatUI`,
   `window.lovia`, the HTTP API. Not `lovia.web.config`, class names, or JS modules.
 

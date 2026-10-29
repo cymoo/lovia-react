@@ -65,9 +65,9 @@ toast`。子页面通过 URL 表示：`?view=<id>/<path>`（即 `ViewProps.path`
 ## 样式
 
 shadcn/ui 的颜色、圆角和阴影都映射到 lovia 的设计 token 上，因此 React 页面会自动跟随
-聊天页的主题、强调色和暗色模式。Tailwind 不启用 Preflight，并避开聊天页自身的 class 名和
-token——详见 `frontend/src/index.css` 文件头的说明；`backend/tests/test_ui_css.py`
-会检查构建产物。（上游跟踪：cymoo/lovia#317。）
+聊天页的主题、强调色和暗色模式。Tailwind 不启用 Preflight（否则会重置整个页面的样式）——
+详见 `frontend/src/index.css` 文件头的说明；`backend/tests/test_ui_css.py` 会检查构建产物
+读取的每个 lovia token 是否仍然存在。
 
 ## 检查
 

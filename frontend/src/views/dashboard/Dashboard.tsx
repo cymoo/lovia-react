@@ -196,8 +196,8 @@ function StatusBadge({ status, t }: { status: RunStatus | 'blocked_on_approval';
 }
 
 const chartConfig = {
-  completed: { label: 'completed', color: 'var(--chart-1)' },
-  other: { label: 'other', color: 'var(--chart-4)' },
+  completed: { label: 'completed', color: 'var(--lv-chart-1)' },
+  other: { label: 'other', color: 'var(--lv-chart-4)' },
 } satisfies ChartConfig;
 
 function RunsPerDay({ runs, t, lang }: { runs: RunRecord[]; t: T; lang: string }) {
